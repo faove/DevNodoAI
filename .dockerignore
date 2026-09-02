@@ -8,7 +8,6 @@
 .vscode
 .zed
 .nova
-.npmrc
 .env
 .env.*
 !.env.example
