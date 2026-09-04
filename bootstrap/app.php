@@ -19,7 +19,12 @@ return Application::configure(basePath: dirname(__DIR__))
             AddLinkHeadersForPreloadedAssets::class,
         ]);
 
-        //
+        // The app only ever receives traffic from the nginx sidecar in the
+        // same container network (Traefik terminates TLS and proxies to it),
+        // never directly from the internet — so trusting every immediate
+        // caller's X-Forwarded-* headers here is safe and is what lets
+        // Laravel know the original request was HTTPS.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
