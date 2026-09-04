@@ -41,7 +41,9 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - appnet
+      appnet:
+        aliases:
+          - devnodoai-app
     healthcheck:
       test: ["CMD-SHELL", "php -v >/dev/null 2>&1 || exit 1"]
       interval: 30s

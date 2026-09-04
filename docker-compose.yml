@@ -68,12 +68,8 @@ services:
       - traefik.http.routers.devnodoai.priority=10
       - traefik.http.routers.devnodoai-http.rule=Host(`ai.devnodo.com`)
       - traefik.http.routers.devnodoai-http.entrypoints=web
-      - traefik.http.routers.devnodoai-http.middlewares=devnodoai-redirect
-      - traefik.http.middlewares.devnodoai-redirect.redirectscheme.scheme=https
-      - traefik.http.middlewares.devnodoai-redirect.redirectscheme.permanent=true
+      - traefik.http.routers.devnodoai-http.service=devnodoai
       - traefik.http.services.devnodoai.loadbalancer.server.port=80
-    environment:
-      APP_URL: https://ai.devnodo.com
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/up"]
       interval: 30s
