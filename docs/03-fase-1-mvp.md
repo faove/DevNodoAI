@@ -5,14 +5,45 @@ Objetivo: un usuario se loguea, elige/crea un `Client` (marca), escribe
 generado por `reels-motion-designer` a través de este backend. Todo lo demás
 (billing, multi-agente real, async) queda para fases posteriores.
 
-## Decisión pendiente de confirmar antes de arrancar
+## Frontend — hecho (2026-09-04)
 
-- [ ] Framework de frontend para el chat (recomendado: Livewire + Alpine — ver
-      `00-plan-general.md`, decisión 6). Bloquea las tareas de UI, no las de backend.
+- [x] Framework de frontend decidido: **Inertia + React** (ver `00-plan-general.md`,
+      decisión 6).
+- [x] Instalado vía `laravel/breeze` preset `react` (TypeScript, dark mode,
+      ESLint/Prettier) — trae auth scaffolding completo (login, registro, reset de
+      contraseña, verificación de email, perfil) en `resources/js/Pages/`.
+- [x] Bugs de scaffolding encontrados y corregidos durante la instalación:
+  - `resources/js/app.tsx` importaba `./bootstrap`, un archivo que el propio
+    paquete `laravel/breeze` v2.4.2 no incluye para este stack — import colgante
+    eliminado (nada más en el código depende de axios/`window.axios`).
+  - `vite.config.js` no fijaba `server.origin` — con el contenedor bindeando
+    `0.0.0.0`, las URLs de assets inyectadas en el HTML apuntaban a
+    `http://0.0.0.0:5173/...` (no confiable desde el navegador del host). Se fijó
+    `server.origin: 'http://localhost:5173'`.
+  - `@vitejs/plugin-react` (`^4.2.0` que trae Breeze) no soporta `vite@^8` (ya
+    fijado en este repo desde antes de Breeze) — se subió a `^6.1.1`.
+  - `@types/node@^18` no satisface el peer de `vite@8` (`^20.19 || >=22.12`) — se
+    subió a `^22.12.0`.
+  - `@laravel/multiplex` (optionalDependency del scaffold en blanco original, solo
+    mejora cosmética de `php artisan dev`) exigía React 19, chocando con el stack
+    React 18 de Breeze — se quitó (`php artisan dev` cae a `concurrently` sin él).
+  - `@tailwindcss/vite@^4` quedó como dependencia sin uso (Breeze usa Tailwind 3
+    clásico vía `postcss.config.js` + `tailwind.config.js`, no el plugin v4) — se
+    quitó.
+  - `.env`: `APP_URL` apuntaba a `http://localhost:8000` (default de
+    `php artisan serve`) en vez de `http://localhost:8080` (puerto real de nginx en
+    `docker-compose-local.yml`) — corregido.
+- [x] Validado end-to-end vía HTTP (sin navegador disponible en este entorno):
+      `GET /register` sirve el HTML de Inertia con el script de React apuntando a
+      `localhost:5173`; `POST /register` con headers `X-XSRF-TOKEN`/`X-Inertia`
+      crea el usuario y redirige a `/dashboard`; `GET /dashboard` autenticado
+      devuelve el `data-page` de Inertia con el usuario correcto. **Pendiente**:
+      confirmar visualmente en un navegador real que la UI se ve/interactúa bien
+      (esta sesión no tuvo la extensión de Chrome conectada).
 
 ## Auth y base
 
-- [ ] Instalar Laravel Fortify o Breeze (auth mínima: login/registro).
+- [x] Auth instalada (Breeze: login/registro/reset/verify/perfil).
 - [ ] Migración + modelo `Client` (marca): `nombre`, `slug`, `user_id` (dueño),
       `tono`, `voz`, `visual_paleta` (json), `visual_tipografia`, `visual_estilo`,
       `claims_aprobados` (json), `pilares_contenido` (json), `oferta`,

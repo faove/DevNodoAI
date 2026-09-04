@@ -77,13 +77,15 @@ integración con n8n en [`02-integracion-n8n.md`](02-integracion-n8n.md).
    SaaS puede gestionar varios `Client`. Esto encaja con el caso de uso real
    (agencias/freelancers de marketing gestionando múltiples marcas), no solo
    "una empresa, una cuenta".
-6. **Frontend: por definir el framework, no el contrato.** El contrato del backend es
-   una API JSON (`POST /api/conversations/{id}/messages`) independiente de qué
-   consuma esa API. Recomendación para V1: **Livewire + Alpine** (ya viene con
-   Tailwind/Vite en este repo, un solo stack, entrega rápida para un solo dev). Si
-   más adelante se necesita una UI más "app" (animaciones de escritura, actualizaciones
-   en tiempo real vía broadcasting), se evalúa migrar a Inertia + React/Vue sin romper
-   el contrato de API. **Pendiente de confirmar antes de empezar Fase 1.**
+6. **Frontend: Inertia + React (decidido, 2026-09-04).** Livewire+Alpine no llega a
+   sentirse "como React" — su modelo es server-round-trip con morphing de DOM, no
+   estado de componente en el cliente, y esa era justo la condición que se pidió
+   para descartarlo. Se instaló vía `laravel/breeze` (preset `react`, con
+   TypeScript, dark mode y ESLint/Prettier) — esto trae de regalo scaffolding de
+   auth completo (login/registro/reset de contraseña/verificación de email/perfil),
+   que Fase 1 iba a necesitar de todas formas. El contrato de API sigue siendo el
+   mismo (`POST /api/conversations/{id}/messages`); Inertia solo decide cómo se
+   renderiza cada página, no cambia ese contrato.
 
 ## Estado actual (línea base, 2026-09-04)
 
