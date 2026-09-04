@@ -33,7 +33,7 @@ RUN if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install 
 
 COPY resources ./resources
 COPY public ./public
-COPY vite.config.js ./
+COPY vite.config.js tsconfig.json postcss.config.js tailwind.config.js ./
 
 RUN npm run build
 
