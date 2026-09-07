@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'n8n' => [
+        'base_url' => env('N8N_BASE_URL', 'https://n8n.devnodo.com'),
+        'timeout' => env('N8N_HTTP_TIMEOUT', 120),
+    ],
+
 ];
