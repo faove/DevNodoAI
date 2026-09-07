@@ -34,7 +34,11 @@ export default function ResetPassword({
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel
+                        htmlFor="email"
+                        value="Email"
+                        className="!text-madison-muted"
+                    />
 
                     <TextInput
                         id="email"
@@ -50,7 +54,11 @@ export default function ResetPassword({
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel
+                        htmlFor="password"
+                        value="Password"
+                        className="!text-madison-muted"
+                    />
 
                     <TextInput
                         id="password"
@@ -70,6 +78,7 @@ export default function ResetPassword({
                     <InputLabel
                         htmlFor="password_confirmation"
                         value="Confirm Password"
+                        className="!text-madison-muted"
                     />
 
                     <TextInput

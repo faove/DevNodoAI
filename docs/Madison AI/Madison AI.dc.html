@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b0d12;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#5b9cff;text-decoration:none}a:hover{color:#8fbcff}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(255,255,255,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#5b9cff;color:#04101f;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'Plus Jakarta Sans',system-ui,sans-serif;color:#e8eef8}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(255,255,255,.1);color:#e8eef8;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;color:rgba(232,238,248,.55)}
+.dv-card{max-width:100%;border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.dv-opt:target .dv-oid{background:#5b9cff;color:#04101f}
+.dv-next{margin:22px 0 0;font:12px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:rgba(232,238,248,.5)}
+@keyframes mdPulse{0%,100%{opacity:.25;r:3}50%{opacity:1}}
+@keyframes mdFlow{to{stroke-dashoffset:-240}}
+@keyframes mdSpin{to{transform:rotate(360deg)}}
+@keyframes mdBlink{0%,100%{opacity:.3}50%{opacity:1}}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Madison AI — identidad, login y chat de agentes</span></div>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Sistema de logo — isotipo de nodos en forma de M</div>
+<div class="dv-card" style="width:1120px;background:#070b14">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07)">
+    <div style="background:#070b14;padding:34px 30px;display:flex;flex-direction:column;gap:22px;min-height:210px">
+      <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Isotipo</div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center">
+        <svg width="88" height="88" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="11" cy="12" r="3.4" fill="#070b14" stroke="#5b9cff" stroke-width="2.2"></circle><circle cx="37" cy="12" r="3.4" fill="#070b14" stroke="#5b9cff" stroke-width="2.2"></circle><circle cx="11" cy="38" r="3.4" fill="#070b14" stroke="#3b82f6" stroke-width="2.2"></circle><circle cx="37" cy="38" r="3.4" fill="#070b14" stroke="#3b82f6" stroke-width="2.2"></circle><circle cx="24" cy="27" r="4.4" fill="#8b7bff"></circle></svg>
+      </div>
+    </div>
+    <div style="background:#070b14;padding:34px 30px;display:flex;flex-direction:column;gap:22px">
+      <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Horizontal · fondo oscuro</div>
+      <div style="flex:1;display:flex;align-items:center;gap:14px">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="11" cy="12" r="3.2" fill="#070b14" stroke="#5b9cff" stroke-width="2.6"></circle><circle cx="37" cy="12" r="3.2" fill="#070b14" stroke="#5b9cff" stroke-width="2.6"></circle><circle cx="11" cy="38" r="3.2" fill="#070b14" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="37" cy="38" r="3.2" fill="#070b14" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="24" cy="27" r="4.2" fill="#8b7bff"></circle></svg>
+        <div style="font:700 23px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em;color:#f4f7fc">madison<span style="color:#5b9cff">.ai</span></div>
+      </div>
+    </div>
+    <div style="background:#f4f7fc;padding:34px 30px;display:flex;flex-direction:column;gap:22px">
+      <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8593ab">Horizontal · fondo claro</div>
+      <div style="flex:1;display:flex;align-items:center;gap:14px">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="11" cy="12" r="3.2" fill="#f4f7fc" stroke="#2563eb" stroke-width="2.6"></circle><circle cx="37" cy="12" r="3.2" fill="#f4f7fc" stroke="#2563eb" stroke-width="2.6"></circle><circle cx="11" cy="38" r="3.2" fill="#f4f7fc" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="37" cy="38" r="3.2" fill="#f4f7fc" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="24" cy="27" r="4.2" fill="#6b5ce7"></circle></svg>
+        <div style="font:700 23px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em;color:#0a1224">madison<span style="color:#2563eb">.ai</span></div>
+      </div>
+    </div>
+    <div style="background:#070b14;padding:34px 30px;display:flex;flex-direction:column;gap:22px">
+      <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Compacto · favicon · app</div>
+      <div style="flex:1;display:flex;align-items:center;gap:18px">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(150deg,#152240,#0a1224);border:1px solid rgba(91,156,255,.28);display:flex;align-items:center;justify-content:center">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="24" cy="27" r="4.6" fill="#8b7bff"></circle></svg>
+        </div>
+        <div style="width:32px;height:32px;border-radius:8px;background:#5b9cff;display:flex;align-items:center;justify-content:center">
+          <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#04101f" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </div>
+        <div style="width:18px;height:18px;border-radius:5px;background:#5b9cff;display:flex;align-items:center;justify-content:center">
+          <svg width="12" height="12" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#04101f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:1px;background:rgba(255,255,255,.07)">
+    <div style="flex:1;background:#070b14;padding:22px 30px;display:flex;flex-wrap:wrap;gap:26px;align-items:center">
+      <div style="font:400 12px/1.5 'Plus Jakarta Sans',sans-serif;color:#a8b4c8;max-width:420px">Cinco nodos unidos por un solo trazo que dibuja una M: entradas a la izquierda, salidas a la derecha y el nodo de orquestación en el centro. Funciona sin el texto y sobrevive a 16&nbsp;px.</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div style="width:34px;height:34px;border-radius:8px;background:#070b14;border:1px solid rgba(255,255,255,.12)"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#0f1a30"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#5b9cff"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#8b7bff"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#f4f7fc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Login — tarjeta centrada, malla de puntos y halo</div>
+<div class="dv-card" style="width:1120px">
+  <div style="position:relative;height:720px;background:#070b14;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(91,156,255,.16) 1.6px,transparent 1.6px);background-size:34px 34px;opacity:.5"></div>
+    <div style="position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:520px;background:radial-gradient(ellipse at center,rgba(59,130,246,.28),transparent 65%);filter:blur(10px)"></div>
+    <div style="position:absolute;bottom:-220px;right:-120px;width:620px;height:520px;background:radial-gradient(ellipse at center,rgba(139,123,255,.18),transparent 65%)"></div>
+
+    <div style="position:relative;width:432px;display:flex;flex-direction:column;align-items:center;gap:30px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="11" cy="12" r="3.2" fill="#070b14" stroke="#5b9cff" stroke-width="2.6"></circle><circle cx="37" cy="12" r="3.2" fill="#070b14" stroke="#5b9cff" stroke-width="2.6"></circle><circle cx="11" cy="38" r="3.2" fill="#070b14" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="37" cy="38" r="3.2" fill="#070b14" stroke="#3b82f6" stroke-width="2.6"></circle><circle cx="24" cy="27" r="4.2" fill="#8b7bff"></circle></svg>
+        <div style="text-align:center;display:flex;flex-direction:column;gap:8px">
+          <div style="font:700 27px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.01em;color:#f4f7fc">Madison AI</div>
+          <div style="font:400 14px/1.5 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Tu equipo de agentes de IA, en una sola interfaz.</div>
+        </div>
+      </div>
+
+      <div style="width:100%;background:rgba(15,26,48,.62);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 12px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Email</span>
+          <input type="email" value="facundo@devnodo.com" style="width:100%;box-sizing:border-box;background:#0a1224;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;font:400 14px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none" style-focus="border-color:#5b9cff;box-shadow:0 0 0 3px rgba(91,156,255,.18)">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 12px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Contraseña</span>
+          <span style="position:relative;display:block">
+            <input type="{{ typeA }}" value="madison2026" style="width:100%;box-sizing:border-box;background:#0a1224;border:1px solid rgba(91,156,255,.55);border-radius:10px;padding:12px 74px 12px 14px;font:400 14px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none;box-shadow:0 0 0 3px rgba(91,156,255,.14)">
+            <button type="button" onClick="{{ toggleA }}" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;cursor:pointer;font:500 11px/1 'Plus Jakarta Sans',sans-serif;color:#5b9cff;padding:6px 8px;border-radius:6px" style-hover="background:rgba(91,156,255,.12)">{{ labelA }}</button>
+          </span>
+        </label>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <label style="display:flex;align-items:center;gap:9px;cursor:pointer">
+            <span style="width:16px;height:16px;border-radius:5px;background:#5b9cff;display:flex;align-items:center;justify-content:center">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 4.8 8.5 9.5 3.8" stroke="#04101f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+            <span style="font:400 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Recordarme</span>
+          </label>
+          <a href="#1a" style="font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#5b9cff">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="button" style="margin-top:4px;width:100%;border:0;cursor:pointer;border-radius:11px;padding:14px;background:linear-gradient(100deg,#3b82f6,#5b9cff 55%,#8b7bff);color:#04101f;font:600 14.5px/1 'Plus Jakarta Sans',sans-serif;box-shadow:0 12px 30px rgba(59,130,246,.35)" style-hover="filter:brightness(1.08)">Iniciar sesión</button>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:2px">
+          <span style="flex:1;height:1px;background:rgba(255,255,255,.1)"></span>
+          <span style="font:500 10px/1 'Space Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6b7a92">espacio reservado</span>
+          <span style="flex:1;height:1px;background:rgba(255,255,255,.1)"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="border:1px dashed rgba(255,255,255,.14);border-radius:10px;padding:11px;text-align:center;font:500 12px/1 'Plus Jakarta Sans',sans-serif;color:#6b7a92">Google</div>
+          <div style="border:1px dashed rgba(255,255,255,.14);border-radius:10px;padding:11px;text-align:center;font:500 12px/1 'Plus Jakarta Sans',sans-serif;color:#6b7a92">Microsoft · SSO</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;font:400 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#4b5670">
+        <span>Desarrollado por DevNodo</span><span>·</span><span>Ambiente de pruebas</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Login — sin tarjeta, constelación de agentes en vivo</div>
+<div class="dv-card" style="width:1120px">
+  <div style="position:relative;height:720px;background:linear-gradient(170deg,#0a1224,#070b14 70%);overflow:hidden;display:flex;align-items:center;font-family:'Plus Jakarta Sans',sans-serif">
+    <svg viewBox="0 0 1120 720" style="position:absolute;inset:0;width:100%;height:100%;opacity:.85" fill="none">
+      <g stroke="rgba(91,156,255,.28)" stroke-width="1.2" stroke-dasharray="4 8" style="animation:mdFlow 9s linear infinite">
+        <path d="M820 150 L940 300 L820 470 L660 400 L820 150"></path>
+        <path d="M940 300 L1060 200 M660 400 L560 250 M820 470 L900 620 M660 400 L720 600"></path>
+      </g>
+      <g fill="#5b9cff">
+        <circle cx="820" cy="150" r="4" style="animation:mdPulse 4s ease-in-out infinite"></circle>
+        <circle cx="940" cy="300" r="4" style="animation:mdPulse 4s ease-in-out .6s infinite"></circle>
+        <circle cx="820" cy="470" r="4" style="animation:mdPulse 4s ease-in-out 1.2s infinite"></circle>
+        <circle cx="1060" cy="200" r="3" style="animation:mdPulse 4s ease-in-out 1.8s infinite"></circle>
+        <circle cx="560" cy="250" r="3" style="animation:mdPulse 4s ease-in-out 2.4s infinite"></circle>
+        <circle cx="900" cy="620" r="3" style="animation:mdPulse 4s ease-in-out 3s infinite"></circle>
+        <circle cx="720" cy="600" r="3" style="animation:mdPulse 4s ease-in-out 3.6s infinite"></circle>
+      </g>
+      <circle cx="660" cy="400" r="8" fill="#8b7bff"></circle>
+      <circle cx="660" cy="400" r="20" stroke="rgba(139,123,255,.35)" stroke-width="1.2"></circle>
+    </svg>
+    <div style="position:absolute;left:-160px;top:120px;width:640px;height:480px;background:radial-gradient(ellipse at center,rgba(59,130,246,.22),transparent 65%)"></div>
+
+    <div style="position:relative;padding:0 80px;width:520px;display:flex;flex-direction:column;gap:34px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="24" cy="27" r="4.4" fill="#8b7bff"></circle></svg>
+        <span style="font:700 17px/1 'Space Grotesk',sans-serif;color:#f4f7fc">madison<span style="color:#5b9cff">.ai</span></span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5b9cff">Plataforma de agentes</div>
+        <h1 style="margin:0;font:700 42px/1.08 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#f4f7fc;text-wrap:pretty">Inteligencia conectada a tu operación.</h1>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <label style="display:flex;flex-direction:column;gap:7px">
+          <span style="font:500 11.5px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.02em;color:#6b7a92">EMAIL</span>
+          <input type="email" placeholder="tu@empresa.com" style="width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.16);padding:10px 0;font:400 16px/1.2 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none" style-focus="border-bottom-color:#5b9cff">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:7px">
+          <span style="font:500 11.5px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.02em;color:#6b7a92">CONTRASEÑA</span>
+          <span style="position:relative;display:block">
+            <input type="{{ typeB }}" placeholder="••••••••" style="width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.16);padding:10px 70px 10px 0;font:400 16px/1.2 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none" style-focus="border-bottom-color:#5b9cff">
+            <button type="button" onClick="{{ toggleB }}" style="position:absolute;right:0;top:6px;background:transparent;border:0;cursor:pointer;font:500 11px/1 'Plus Jakarta Sans',sans-serif;color:#5b9cff;padding:6px">{{ labelB }}</button>
+          </span>
+        </label>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px">
+          <label style="display:flex;align-items:center;gap:9px;cursor:pointer">
+            <span style="width:16px;height:16px;border-radius:5px;border:1px solid rgba(255,255,255,.22)"></span>
+            <span style="font:400 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Recordarme</span>
+          </label>
+          <a href="#1b" style="font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8" style-hover="color:#5b9cff">Recuperar acceso</a>
+        </div>
+        <button type="button" style="margin-top:10px;align-self:flex-start;display:flex;align-items:center;gap:12px;border:0;cursor:pointer;border-radius:999px;padding:15px 28px;background:#5b9cff;color:#04101f;font:600 14.5px/1 'Plus Jakarta Sans',sans-serif" style-hover="background:#8fbcff">
+          Iniciar sesión
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 8h11M9.5 4l4 4-4 4" stroke="#04101f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+      </div>
+
+      <div style="font:400 11.5px/1.6 'Plus Jakarta Sans',sans-serif;color:#4b5670">DevNodo · ai.devnodo.com — ambiente de pruebas</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Login — mensaje grande y tarjeta compacta con marca de agua</div>
+<div class="dv-card" style="width:1120px">
+  <div style="position:relative;height:720px;background:#070b14;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:38px;font-family:'Plus Jakarta Sans',sans-serif">
+    <svg width="760" height="760" viewBox="0 0 48 48" fill="none" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.05"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="24" cy="27" r="3" fill="#8b7bff"></circle></svg>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 110%,rgba(139,123,255,.16),transparent 70%)"></div>
+
+    <div style="position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;max-width:640px">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(91,156,255,.3);background:rgba(91,156,255,.08);font:500 11px/1 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#5b9cff">
+        <span style="width:6px;height:6px;border-radius:50%;background:#5b9cff;animation:mdBlink 2.4s ease-in-out infinite"></span>Madison AI
+      </div>
+      <h1 style="margin:0;font:700 40px/1.12 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#f4f7fc;text-wrap:pretty">Agentes que trabajan.<br>Flujos que no se rompen.</h1>
+      <p style="margin:0;font:400 14.5px/1.6 'Plus Jakarta Sans',sans-serif;color:#a8b4c8;max-width:460px">Modelos, automatizaciones y APIs bajo una misma sesión. Entrá para operar tus agentes.</p>
+    </div>
+
+    <div style="position:relative;width:400px;background:#0a1224;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:15px">
+      <input type="email" placeholder="Email corporativo" style="width:100%;box-sizing:border-box;background:#0f1a30;border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:13px 14px;font:400 14px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none" style-focus="border-color:#8b7bff;box-shadow:0 0 0 3px rgba(139,123,255,.18)">
+      <span style="position:relative;display:block">
+        <input type="{{ typeC }}" placeholder="Contraseña" style="width:100%;box-sizing:border-box;background:#0f1a30;border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:13px 70px 13px 14px;font:400 14px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc;outline:none" style-focus="border-color:#8b7bff;box-shadow:0 0 0 3px rgba(139,123,255,.18)">
+        <button type="button" onClick="{{ toggleC }}" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;cursor:pointer;font:500 11px/1 'Plus Jakarta Sans',sans-serif;color:#8b7bff;padding:6px 8px;border-radius:6px" style-hover="background:rgba(139,123,255,.12)">{{ labelC }}</button>
+      </span>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer">
+          <span style="width:16px;height:16px;border-radius:5px;border:1px solid rgba(255,255,255,.2)"></span>
+          <span style="font:400 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8">Recordarme</span>
+        </label>
+        <a href="#1c" style="font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#8b7bff">Recuperar contraseña</a>
+      </div>
+      <button type="button" style="margin-top:4px;width:100%;border:1px solid rgba(139,123,255,.5);cursor:pointer;border-radius:11px;padding:14px;background:#f4f7fc;color:#0a1224;font:600 14.5px/1 'Plus Jakarta Sans',sans-serif" style-hover="background:#fff">Iniciar sesión</button>
+      <div style="text-align:center;font:400 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#4b5670">Acceso corporativo con SSO disponible próximamente</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Chat con agentes — shell escalable (sidebar, hilo, resultado)</div>
+<div class="dv-card" style="width:1400px">
+  <div style="display:flex;height:1000px;background:#070b14;font-family:'Plus Jakarta Sans',sans-serif;color:#e8eef8">
+
+    <aside style="width:248px;flex:none;background:#0a1224;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column">
+      <div style="padding:20px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)">
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="24" cy="27" r="4.6" fill="#8b7bff"></circle></svg>
+        <span style="font:700 14.5px/1 'Space Grotesk',sans-serif;color:#f4f7fc">madison<span style="color:#5b9cff">.ai</span></span>
+      </div>
+
+      <div style="padding:16px 12px;display:flex;flex-direction:column;gap:4px">
+        <div style="padding:6px 8px;font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4b5670">Trabajo</div>
+        <sc-for list="{{ navMain }}" as="item" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;font:500 13px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8" style-hover="background:rgba(255,255,255,.05);color:#f4f7fc">
+            <span style="width:6px;height:6px;border-radius:2px;background:rgba(168,180,200,.4)"></span>{{ item.label }}
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;background:rgba(91,156,255,.12);border:1px solid rgba(91,156,255,.22);font:600 13px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc">
+          <span style="width:6px;height:6px;border-radius:2px;background:#5b9cff"></span>Chat
+        </div>
+        <div style="padding:14px 8px 6px;font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4b5670">Plataforma</div>
+        <sc-for list="{{ navPlatform }}" as="item" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;font:500 13px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8" style-hover="background:rgba(255,255,255,.05);color:#f4f7fc">
+            <span style="width:6px;height:6px;border-radius:2px;background:rgba(168,180,200,.4)"></span>{{ item.label }}
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:auto;padding:14px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,#3b82f6,#8b7bff);display:flex;align-items:center;justify-content:center;font:600 12px/1 'Space Grotesk',sans-serif;color:#04101f">FO</div>
+        <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+          <span style="font:600 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc">Facundo O.</span>
+          <span style="font:400 11px/1 'Plus Jakarta Sans',sans-serif;color:#6b7a92">DevNodo · Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <header style="flex:none;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(10,18,36,.5)">
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font:600 15px/1 'Space Grotesk',sans-serif;color:#f4f7fc">Agente de contenido</div>
+          <div style="font:400 12px/1 'Plus Jakarta Sans',sans-serif;color:#6b7a92">Reels 9:16 · guion + escenas · vía n8n</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px;padding:9px 13px;border-radius:10px;background:#0f1a30;border:1px solid rgba(255,255,255,.09);font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#e8eef8">
+            <span style="width:7px;height:7px;border-radius:50%;background:#5b9cff"></span>Marca activa · Nodo Café
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.8 6 7.8 9 4.8" stroke="#6b7a92" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          </div>
+          <button type="button" style="border:1px solid rgba(255,255,255,.12);background:transparent;cursor:pointer;border-radius:10px;padding:10px 14px;font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8" style-hover="border-color:rgba(91,156,255,.5);color:#f4f7fc">Nueva conversación</button>
+        </div>
+      </header>
+
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:26px 24px;display:flex;flex-direction:column;gap:20px">
+        <div style="align-self:flex-end;max-width:60%;background:linear-gradient(120deg,#2563eb,#5b9cff);color:#04101f;border-radius:16px 16px 6px 16px;padding:13px 16px;font:500 13.5px/1.5 'Plus Jakarta Sans',sans-serif">Creame un reel para Instagram sobre la oferta de septiembre, tono directo, 6 escenas.</div>
+
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:30px;height:30px;flex:none;border-radius:9px;background:#0f1a30;border:1px solid rgba(91,156,255,.25);display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 48 48" fill="none"><polyline points="11,38 11,12 24,27 37,12 37,38" stroke="#5b9cff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+          </div>
+          <div style="flex:1;min-width:0;background:#0a1224;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden">
+            <div style="padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:16px">
+              <div style="display:flex;align-items:center;gap:10px;font:600 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#f4f7fc">
+                Resultado del agente
+                <span style="padding:4px 9px;border-radius:999px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);font:500 10.5px/1 'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#34d399">Listo</span>
+              </div>
+              <div style="font:400 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#4b5670">flow: reel-9-16 · 24s</div>
+            </div>
+
+            <div style="padding:18px;display:flex;flex-direction:column;gap:18px">
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Guion</div>
+                <div style="background:#0f1a30;border-radius:11px;padding:14px 16px;font:400 13px/1.65 'Plus Jakarta Sans',sans-serif;color:#e8eef8;white-space:pre-wrap">01 · Hook — «¿Seguís pagando de más por tu café de oficina?»
+02 · Problema — pedidos por WhatsApp, sin control de stock.
+03 · Giro — Nodo Café centraliza el pedido en un panel.</div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Escenas 9:16</div>
+                  <a href="#1e" style="font:500 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#5b9cff">Abrir en previz</a>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+                  <sc-for list="{{ scenes }}" as="scene" hint-placeholder-count="6">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <div style="aspect-ratio:9/16;border-radius:9px;background:linear-gradient(165deg,#152240,#070b14);border:1px solid rgba(255,255,255,.09);display:flex;align-items:flex-end;padding:9px;position:relative;overflow:hidden">
+                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(91,156,255,.2) 1.2px,transparent 1.2px);background-size:14px 14px;opacity:.5"></div>
+                        <div style="position:relative;font:600 10px/1.25 'Space Grotesk',sans-serif;color:#a8b4c8">{{ scene.title }}</div>
+                      </div>
+                      <div style="font:400 10px/1 'Plus Jakarta Sans',sans-serif;color:#4b5670">{{ scene.time }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                <span style="font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b7a92">Pendientes</span>
+                <span style="padding:6px 11px;border-radius:999px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);font:500 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#fbbf24">Falta logo en alta</span>
+                <span style="padding:6px 11px;border-radius:999px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);font:500 11.5px/1 'Plus Jakarta Sans',sans-serif;color:#fbbf24">Confirmar precio final</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="width:30px;height:30px;flex:none;border-radius:9px;background:#0f1a30;border:1px solid rgba(91,156,255,.25);display:flex;align-items:center;justify-content:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="animation:mdSpin 1.1s linear infinite"><circle cx="12" cy="12" r="9" stroke="rgba(91,156,255,.2)" stroke-width="3"></circle><path d="M21 12a9 9 0 0 0-9-9" stroke="#5b9cff" stroke-width="3" stroke-linecap="round"></path></svg>
+          </div>
+          <div style="font:500 12.5px/1 'Plus Jakarta Sans',sans-serif;color:#5b9cff">Generando variante vertical… la automatización puede tardar 20–30 s</div>
+        </div>
+      </div>
+
+      <div style="flex:none;padding:16px 24px 20px;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;background:rgba(10,18,36,.4)">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
+            <button type="button" style="border:1px solid rgba(255,255,255,.1);background:transparent;cursor:pointer;border-radius:999px;padding:8px 13px;font:500 12px/1 'Plus Jakarta Sans',sans-serif;color:#a8b4c8" style-hover="border-color:rgba(91,156,255,.5);color:#f4f7fc">{{ chip.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-end;background:#0f1a30;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 12px 12px 16px" style-focus-within="border-color:rgba(91,156,255,.5)">
+          <textarea rows="2" placeholder="Escribí una instrucción para el agente…" style="flex:1;min-width:0;background:transparent;border:0;resize:none;outline:none;font:400 13.5px/1.55 'Plus Jakarta Sans',sans-serif;color:#f4f7fc"></textarea>
+          <button type="button" style="flex:none;border:0;cursor:pointer;border-radius:11px;padding:11px 18px;background:linear-gradient(100deg,#3b82f6,#8b7bff);color:#04101f;font:600 13px/1 'Plus Jakarta Sans',sans-serif" style-hover="filter:brightness(1.08)">Enviar</button>
+        </div>
+        <div style="font:400 11px/1 'Plus Jakarta Sans',sans-serif;color:#4b5670">Enter para enviar · Shift+Enter para nueva línea</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probá: «quedémonos con <a class="dv-oid" href="#1a">1a</a> pero con el botón de <a class="dv-oid" href="#1b">1b</a>» · «agregá light mode al chat <a class="dv-oid" href="#1e">1e</a>» · «diseñá el dashboard y la lista de agentes»</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1500,&quot;height&quot;:1000}}">
+class Component extends DCLogic {
+  state = { a: false, b: false, c: false };
+  renderVals() {
+    const t = (v) => (v ? "text" : "password");
+    const l = (v) => (v ? "Ocultar" : "Mostrar");
+    const flip = (k) => () => this.setState((s) => ({ [k]: !s[k] }));
+    return {
+      typeA: t(this.state.a), labelA: l(this.state.a), toggleA: flip("a"),
+      typeB: t(this.state.b), labelB: l(this.state.b), toggleB: flip("b"),
+      typeC: t(this.state.c), labelC: l(this.state.c), toggleC: flip("c"),
+      navMain: [{ label: "Resumen" }, { label: "Agentes" }, { label: "Historial" }],
+      navPlatform: [{ label: "Automatizaciones" }, { label: "Workflows" }, { label: "Integraciones" }, { label: "Configuración" }],
+      scenes: [
+        { title: "Hook", time: "0–2 s" }, { title: "Problema", time: "2–5 s" },
+        { title: "Giro", time: "5–9 s" }, { title: "Prueba", time: "9–13 s" },
+        { title: "Oferta", time: "13–17 s" }, { title: "CTA", time: "17–20 s" }
+      ],
+      chips: [
+        { label: "Reel de 6 escenas" }, { label: "Analizar esta imagen" },
+        { label: "Reescribir el guion en tono formal" }, { label: "Disparar workflow n8n" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
